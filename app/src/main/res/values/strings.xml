@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TallerMovilesAndroid</string>
+    <string name="app_name">Taller Moviles Android</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -22,7 +22,7 @@
     <string name="apellido">Apellido</string>
     <string name="edad">Edad</string>
     <string name="documento">N° Documento</string>
-    <string name="descripcion2">Por favor llene los campos con la informción de la última persona que ha tenido contacto</string>
+    <string name="descripcion2">Por favor llene los campos con la información de la última persona que ha tenido contacto</string>
     <string name="p1entrada">Nombre del barrio o ciudad</string>
     <string name="p1radio">Si o No</string>
     <string name="p2Radio">Si o No</string>

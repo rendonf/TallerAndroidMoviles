@@ -23,7 +23,7 @@ public class AutoevaluacionFragment extends Fragment {
     EditText edad;
     EditText documento;
     Button boton;
-    String[] reporte = new String[7];
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,13 +48,7 @@ public class AutoevaluacionFragment extends Fragment {
             public void onClick(View v) {
                 System.out.println("Hola");
 
-                /*System.out.println("pregunta 1: " + p1.getText().toString());
-                System.out.println("Lugar: " + lugar.getText().toString());
-                System.out.println("pregunta 2: " + p2.getText().toString());
-                System.out.println("nombre:" + nombre.getText().toString());
-                System.out.println("apellido" + apellido.getText().toString());
-                System.out.println("edad" + edad.getText().toString());
-                System.out.println("n° documento: " + documento.getText().toString());*/
+                String[] reporte = new String[7];
 
                 reporte[0] = p1.getText().toString();
                 reporte[1] = lugar.getText().toString();
@@ -64,9 +58,9 @@ public class AutoevaluacionFragment extends Fragment {
                 reporte[5] = edad.getText().toString();
                 reporte[6] = documento.getText().toString();
 
-                for(int i=0; i<7; i++){
+                /*for(int i=0; i<7; i++){
                     System.out.println(reporte[i]);
-                }
+                }*/
             }
         });
     }

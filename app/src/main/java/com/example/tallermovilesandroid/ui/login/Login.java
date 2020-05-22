@@ -1,8 +1,12 @@
 package com.example.tallermovilesandroid.ui.login;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,22 +45,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        usuario = (EditText) findViewById(R.id.usuario);
-        clave = (EditText) findViewById(R.id.clave);
-        loginMocky = (Button) findViewById(R.id.login);
-        loginMocky.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginMocky();
-            }
-        });
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-         findViewById(R.id.google).setOnClickListener(this);
+
+        boolean red = conexion();               // conexión
+        if(red == true){
+            usuario = (EditText) findViewById(R.id.usuario);
+            clave = (EditText) findViewById(R.id.clave);
+            loginMocky = (Button) findViewById(R.id.login);
+            loginMocky.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loginMocky();
+                }
+            });
+            // Configure sign-in to request the user's ID, email address, and basic
+            // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+            findViewById(R.id.google).setOnClickListener(this);
+        }
     }
 
     public void loginMocky(){
@@ -76,7 +84,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 }else{
                     if ((usuario.getText().toString().equals(json_data.getString("usuario"))) &&
                             (clave.getText().toString().equals(json_data.getString("clave")))) {
-                        System.out.println("soy un usuario, entre");
+                        //System.out.println("soy un usuario, entre");
                         usr = json_data.getString("usuario");
                         correo = json_data.getString("correo");
                         goToMenu("mocky");
@@ -96,12 +104,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    protected void onStart() {
 
+    protected void onStart() {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         //goToMenu();
     }
+
 
     public void showMessage(View obj){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -121,6 +130,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dialog.setMessage(usr);
         dialog.show();
     }
+
+
     public void goToMenu(String tipo){
         Intent ir = new Intent(this, MainActivity.class);
         if(tipo.equals("mocky")){
@@ -139,9 +150,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             ir.putExtras(data);
             startActivity(ir);
         }
-
-
-
     }
 
     @Override
@@ -175,7 +183,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             account = completedTask.getResult(ApiException.class);
-
             // Signed in successfully, show authenticated UI.
             goToMenu("gulugulu");
         } catch (ApiException e) {
@@ -184,4 +191,48 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
+
+    // ------------------------------------------ aqui se se realiza lo de la conexión ---------------------------------------------------------------
+    public boolean conexion(){
+        boolean con = false;
+
+        ConnectivityManager connectivityManager= (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean isWifiConn=false;
+        boolean isMobileConn=false;
+
+        for(Network network: connectivityManager.getAllNetworks()){
+            NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+            if(networkInfo.getType()== ConnectivityManager.TYPE_WIFI){
+                isWifiConn |= networkInfo.isConnected();
+            }
+            if(networkInfo.getType()== ConnectivityManager.TYPE_MOBILE){
+                isMobileConn |= networkInfo.isConnected();
+            }
+        }
+        //System.out.println("ya verifico");
+        if(isWifiConn){
+            //System.out.println("wifi conectado  ");
+            con=true;
+            try {
+                Toast.makeText(this, "Conexión Wi-Fi", Toast.LENGTH_LONG).show();
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else if(isMobileConn){
+            //System.out.println("datos conectado   ");
+            con=true;
+            try {
+                Toast.makeText(this, "Conexión Movil Datos", Toast.LENGTH_LONG).show();
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else{
+            con=false;
+            Toast.makeText(this, "Sin Conexión a la Red", Toast.LENGTH_LONG).show();
+        }
+        return con;
+    }
+
 }

@@ -33,7 +33,7 @@
     <TextView
         android:id="@+id/p2"
         android:layout_width="371dp"
-        android:layout_height="34dp"
+        android:layout_height="45dp"
         android:text="@string/p2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -173,6 +173,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369" />
+        app:layout_constraintVertical_bias="0.38" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
