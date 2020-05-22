@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/tvlnombre"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        android:text="@string/itemnombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/tvnombre"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvlnombre"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/tvlapellido"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        android:text="@string/itemapellido"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlnombre"></TextView>
+
+    <TextView
+        android:id="@+id/tvapellido"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvlapellido"
+        app:layout_constraintTop_toBottomOf="@+id/tvnombre"></TextView>
+
+    <TextView
+        android:id="@+id/tvledad"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        android:text="@string/itemedad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlapellido"></TextView>
+
+    <TextView
+        android:id="@+id/tvedad"
+        android:layout_width="190dp"
+        android:layout_height="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvledad"
+        app:layout_constraintTop_toBottomOf="@+id/tvapellido"></TextView>
+
+    <TextView
+        android:id="@+id/tvlfecha"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        android:text="@string/itemfecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvledad"></TextView>
+
+    <TextView
+        android:id="@+id/tvfecha"
+        android:layout_width="190dp"
+        android:layout_height="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvlfecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvedad"></TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

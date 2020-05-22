@@ -27,4 +27,9 @@
     <string name="p1radio">Si o No</string>
     <string name="p2Radio">Si o No</string>
 
+    <string name="itemnombre">Nombre</string>
+    <string name="itemapellido">Apellido</string>
+    <string name="itemedad">Edad</string>
+    <string name="itemfecha">Fecha</string>
+
 </resources>
