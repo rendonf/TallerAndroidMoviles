@@ -14,5 +14,17 @@
     <string name="usuario">Usuario</string>
     <string name="login">Login</string>
     <string name="google">Google</string>
+    <string name="descripcion">Al llenar este formulario usted va a conocer la probabilidad de tener o no covid 19</string>
+    <string name="p1">¿Ha salido de su casa en los últimos 14 dias?</string>
+    <string name="p2">¿Ha tenido contacto con una persona que haya tenido síntomas gripales y que haya venido del extranjero?</string>
+    <string name="nombre">Nombre</string>
+    <string name="enviar">enviar</string>
+    <string name="apellido">Apellido</string>
+    <string name="edad">Edad</string>
+    <string name="documento">N° Documento</string>
+    <string name="descripcion2">Por favor llene los campos con la informción de la última persona que ha tenido contacto</string>
+    <string name="p1entrada">Nombre del barrio o ciudad</string>
+    <string name="p1radio">Si o No</string>
+    <string name="p2Radio">Si o No</string>
 
 </resources>
