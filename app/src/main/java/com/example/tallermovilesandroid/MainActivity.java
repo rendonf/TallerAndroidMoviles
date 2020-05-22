@@ -3,12 +3,14 @@ package com.example.tallermovilesandroid;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,8 +25,12 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     String nombre="nada";
     String correo="nada";
+    String foto;
     TextView editUsuario;
     TextView editcCorreo;
+    TextView pUsuario;
+    TextView pCorreo;
+    ImageView fotoperfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +52,18 @@ public class MainActivity extends AppCompatActivity {
         Bundle data = getIntent().getExtras();
         nombre = data.getString("nombre");
         correo = data.getString("correo");
+        foto = data.getString("foto");
         System.out.println(nombre);
         System.out.println(correo);
+        System.out.println(foto);
+
+
+
 
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,11 +73,18 @@ public class MainActivity extends AppCompatActivity {
         editUsuario = (TextView) findViewById(R.id.correo);
         editUsuario.setText(nombre);
         editcCorreo.setText(correo);
+        fotoperfil = (ImageView) findViewById(R.id.imagefoto);
+        pCorreo = (TextView) findViewById(R.id.textViewcorreo);
+        pUsuario = (TextView) findViewById(R.id.textViewnombre);
+        Picasso.get()
+                .load(foto)
+                .into(fotoperfil);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

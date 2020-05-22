@@ -127,10 +127,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             Bundle data = new Bundle();
             data.putString("nombre",usr);
             data.putString("correo", correo);
+            data.putString("foto",  "https://maslinux.es/wp-content/uploads/2018/03/router-keygen-para-android.jpg");
+
             ir.putExtras(data);
             startActivity(ir);
         }else{
             Bundle data = new Bundle();
+            data.putString("foto",  account.getPhotoUrl().toString());
             data.putString("nombre",account.getDisplayName());
             data.putString("correo", account.getEmail());
             ir.putExtras(data);
